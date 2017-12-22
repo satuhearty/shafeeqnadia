@@ -2,7 +2,7 @@
 title: Shafeeq & Nadia
 email: youremailaddress@gmail.com
 description: We are getting married!
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/shafeeqnadia" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 author:
 street_address: 1234 Somewhere Road
