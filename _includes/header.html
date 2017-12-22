@@ -14,10 +14,11 @@
 			</div>
 			<nav>
 				<ul>
-					{% for page in site.pages  %}
-					{% unless page.layout == 'default' %}
-					  <li><a href="#{{ page.title }}">{{ page.title }}</a></li>
-					{% endunless %}{% endfor %}
+          <li><a href="#about">About</a></li>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
 				</ul>
 			</nav>
 		</header>
