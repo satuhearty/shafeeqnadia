@@ -29,7 +29,7 @@
     });
 
     // Fix: Placeholder polyfill.
-    $('form').placeholder();
+    // $('form').placeholder();
 
     // Fix: Flexbox min-height bug on IE.
     if (skel.vars.IEVersion < 12) {
@@ -300,19 +300,20 @@
 
       // Prevent clicks from inside article from bubbling.
       $this.on('click', function(event) {
-        event.stopPropagation();
+        // event.stopPropagation();
       });
 
     });
 
     // Events.
-    $body.on('click', function(event) {
-
-      // Article visible? Hide.
-      if ($body.hasClass('is-article-visible'))
-        $main._hide(true);
-
-    });
+    // $body.on('click', function(event) {
+    //   console.log('closing');
+    //
+    //   // Article visible? Hide.
+    //   if ($body.hasClass('is-article-visible'))
+    //     $main._hide(true);
+    //
+    // });
 
     $window.on('keyup', function(event) {
 
