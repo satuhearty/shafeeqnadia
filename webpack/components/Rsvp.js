@@ -33,8 +33,8 @@ class Rsvp extends Component {
       reception: this.state.reception,
       brunch: this.state.brunch
     };
-    // this.props.firebase.database().ref('rsvp').push(guest);
-    // axios.post('https://formspree.io/nikamirulmukmeen@gmail.com', guest);
+    this.props.firebase.database().ref('rsvp').push(guest);
+    axios.post('https://formspree.io/nikamirulmukmeen@gmail.com', guest);
     this.onOpenModal();
     setTimeout(() => {
       this.onCloseModal();
@@ -62,27 +62,22 @@ class Rsvp extends Component {
   };
 
   updateName = (e) => {
-    console.log('fuck name');
     this.setState({ name: e.target.value });
   };
 
   updateEmail = (e) => {
-    console.log('fuck email');
     this.setState({ email: e.target.value });
   };
 
   updatePhone = (e) => {
-    console.log('fuck phone');
     this.setState({ phone: e.target.value });
   };
 
   updateAttending = (e) => {
-    console.log('fuck attending');
     this.setState({ attending: e.target.value });
   };
 
   updateNikah = () => {
-    console.log('fuck nikah');
     this.setState({ nikah: !this.state.nikah });
   };
 

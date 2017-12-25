@@ -15,15 +15,15 @@ phone: (716) 555-5555
 icon: fa-diamond # Font Awesome class for your site's icon
 
 # Social settings
-facebook_url:
+facebook_url: https://www.facebook.com/satuhearty
 github_url:
-gitlab_url: https://gitlab.com/u/andrewbanchich
-googleplus_url: https://plus.google.com/u/0/+AndrewBanchich
-instagram_url:
-linkedin_url: https://www.linkedin.com/in/andrew-banchich-a4ba1195
+gitlab_url:
+googleplus_url:
+instagram_url: https://www.instagram.com/satuhearty
+linkedin_url:
 pinterest_url:
 slack_url:
-twitter_url: https://twitter.com/andrewbanchich
+twitter_url: https://www.twitter.com/satuhearty
 
 sass:
   sass_dir: _sass
