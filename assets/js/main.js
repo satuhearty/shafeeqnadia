@@ -11,7 +11,7 @@
 
   $(function() {
 
-    var	$window = $(window),
+    const	$window = $(window),
       $body = $('body'),
       $wrapper = $('#wrapper'),
       $header = $('#header'),
@@ -30,7 +30,7 @@
 
     // Fix: Flexbox min-height bug on IE.
     if (skel.vars.IEVersion < 12) {
-      var flexboxFixTimeoutId;
+      let flexboxFixTimeoutId;
       $window.on('resize.flexbox-fix', function() {
         clearTimeout(flexboxFixTimeoutId);
         flexboxFixTimeoutId = setTimeout(function() {
@@ -43,7 +43,7 @@
       }).triggerHandler('resize.flexbox-fix');
     }
 
-    var $nav = $header.children('nav'),
+    const $nav = $header.children('nav'),
       $nav_li = $nav.find('li');
 
     if ($nav_li.length % 2 === 0) {
@@ -51,11 +51,11 @@
       $nav_li.eq( ($nav_li.length / 2) ).addClass('is-middle');
     }
 
-    var	delay = 325,
+    let	delay = 325,
       locked = false;
 
     $main._show = function(id, initial) {
-      var $article = $main_articles.filter('#' + id);
+      const $article = $main_articles.filter('#' + id);
 
       if ($article.length === 0) {
         return;
@@ -85,7 +85,7 @@
       locked = true;
 
       if ($body.hasClass('is-article-visible')) {
-        var $currentArticle = $main_articles.filter('.active');
+        const $currentArticle = $main_articles.filter('.active');
         $currentArticle.removeClass('active');
         setTimeout(function() {
           $currentArticle.hide();
@@ -119,7 +119,7 @@
     };
 
     $main._hide = function(addState) {
-      var $article = $main_articles.filter('.active');
+      const $article = $main_articles.filter('.active');
 
       if (!$body.hasClass('is-article-visible')) {
         return;
@@ -166,21 +166,11 @@
     };
 
     $main_articles.each(function() {
-      var $this = $(this);
+      const $this = $(this);
       $('<div class="close">Close</div>').appendTo($this).on('click', function() {
         location.hash = '';
       });
     });
-
-    // Events.
-    // $body.on('click', function(event) {
-    //   console.log('closing');
-    //
-    //   // Article visible? Hide.
-    //   if ($body.hasClass('is-article-visible'))
-    //     $main._hide(true);
-    //
-    // });
 
     $window.on('keyup', function(event) {
       if (event.keyCode === 27 && $body.hasClass('is-article-visible')) {
@@ -198,12 +188,11 @@
       }
     });
 
-    // Scroll restoration.
     // This prevents the page from scrolling back to the top on a hashchange.
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     } else {
-      var	oldScrollPos = 0,
+      let	oldScrollPos = 0,
         scrollPos = 0,
         $htmlbody = $('html,body');
 
@@ -226,7 +215,7 @@
   });
 
   $.fn.timeline = function() {
-    var selectors = {
+    const selectors = {
       id: $(this),
       item: $(this).find(".timeline-item"),
       activeClass: "timeline-item--active",
@@ -242,14 +231,13 @@
         .attr("src") +
       ")"
     );
-    var itemLength = selectors.item.length;
+    const itemLength = selectors.item.length;
     $(window).scroll(function() {
-      var max, min;
-      var pos = $(this).scrollTop();
+      let max, min;
+      const pos = $(this).scrollTop();
       selectors.item.each(function(i) {
         min = $(this).offset().top;
         max = $(this).height() + $(this).offset().top;
-        var that = $(this);
         if (i === itemLength - 2 && pos > min + $(this).height() / 2) {
           selectors.item.removeClass(selectors.activeClass);
           selectors.id.css(

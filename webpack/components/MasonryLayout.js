@@ -56,7 +56,6 @@ class MasonryLayout extends Component {
   }
 
   updateDimensions = () => {
-    console.log('updating dimensions');
     this.bricksInstance.pack();
   };
 
