@@ -31,6 +31,10 @@
 			border-radius: _size(border-radius);
 			opacity: 0;
 
+			&.full-width {
+				width: 100%;
+			}
+
 			&.active {
 				@include vendor('transform', 'translateY(0)');
 				opacity: 1;

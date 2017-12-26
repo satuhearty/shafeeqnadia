@@ -99,8 +99,10 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
-        <button className="button post" onClick={this.onOpenModal}>Post</button>
+      <div style={{ textAlign: 'center' }}>
+        <h2 className="major">Guestbook</h2>
+        <h3 style={{ textAlign: 'left' }}>Send your wedding wishes.</h3>
+        <button className="button post"  style={{ marginBottom: '3em' }} onClick={this.onOpenModal}>Post</button>
         <ScrollToTop
           showUnder={50}
           style={{

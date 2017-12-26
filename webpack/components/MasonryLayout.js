@@ -39,21 +39,15 @@ class MasonryLayout extends Component {
 
     this.bricksInstance = instance;
     window.addEventListener('resize', this.updateDimensions);
+    document.getElementsByClassName('guestbook-button')[0].onclick = () => {
+      setTimeout(() => {
+        this.updateDimensions();
+      }, 500);
+    }
   }
 
   componentDidUpdate() {
     this.bricksInstance.pack();
-    // if (prevProps.children.length === 0 && this.props.children.length === 0) {
-    //   return;
-    // }
-    //
-    // if (prevProps.children.length === 0 && this.props.children.length > 0) {
-    //   return this.bricksInstance.pack();
-    // }
-    //
-    // if (prevProps.children.length !== this.props.children.length) {
-    //   return this.bricksInstance.pack();
-    // }
   }
 
   componentWillUnmount() {
@@ -62,6 +56,7 @@ class MasonryLayout extends Component {
   }
 
   updateDimensions = () => {
+    console.log('updating dimensions');
     this.bricksInstance.pack();
   };
 

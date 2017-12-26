@@ -112,7 +112,7 @@ class Rsvp extends Component {
                 <input type="text" name="demo-code" id="demo-code" placeholder="RSVP Code" onChange={this.updateCode} />
               </div>
               <div className="field" style={{ textAlign: 'center' }}>
-                <button type="button" className="special" onClick={this.handleCodeSubmit}>Submit</button>
+                <input type="submit" value="Submit" className="special" onClick={this.handleCodeSubmit} />
               </div>
             </form>
           </div>
