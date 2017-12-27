@@ -163,25 +163,19 @@ class App extends Component {
     ];
 
     return (
-      <div>
+      <div style={{ width: '80%', margin: '3em auto' }}>
         <div className="row uniform" style={{ paddingBottom: '3em' }}>
-          <div className="4u 12u$(small)" style={{ textAlign: 'center' }}>
-            <div className="box">
-              Nikah Count:<br />
-              <h2>{nikahCount}</h2>
-            </div>
+          <div className="box">
+            Nikah Count:<br />
+            <h2>{nikahCount}</h2>
           </div>
-          <div className="4u 12u$(small)" style={{ textAlign: 'center' }}>
-            <div className="box">
-              Reception Count:<br />
-              <h2>{receptionCount}</h2>
-            </div>
+          <div className="box">
+            Reception Count:<br />
+            <h2>{receptionCount}</h2>
           </div>
-          <div className="4u$ 12u$(small)" style={{ textAlign: 'center' }}>
-            <div className="box">
-              Brunch Count:<br />
-              <h2>{brunchCount}</h2>
-            </div>
+          <div className="box">
+            Brunch Count:<br />
+            <h2>{brunchCount}</h2>
           </div>
         </div>
         <ReactTable

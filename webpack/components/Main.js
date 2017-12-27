@@ -124,20 +124,24 @@ class Main extends Component {
             firebase={this.props.firebase.database()}
           />
         }
-        <Modal open={this.state.open} onClose={this.onCloseModal}>
-          <h2>Wedding message</h2>
-          <p>
-            Send your warmest love to the newly weds! Your wedding messages will be shown shortly.
-          </p>
-          <form method="post" action="#" className="alt">
-            <div className="row uniform">
-              <div className="12u$">
+        <Modal
+          open={this.state.open}
+          onClose={this.onCloseModal}
+          classNames={{ overlay: 'custom-overlay', modal: 'custom-modal', closeIcon: 'custom-close' }}
+        >
+          <div style={{ textAlign: 'center', padding: '25px 15px' }}>
+            <h2>Wedding message</h2>
+            <p>
+              Send your warmest love to the newly weds! Your wedding messages will be shown shortly.
+            </p>
+            <form method="post" action="#" className="alt">
+              <div className="field">
                 <input type="text" name="demo-name" id="demo-name" placeholder="Name" onChange={this.updateAuthor} />
               </div>
-              <div className="12u$">
+              <div className="field">
                 <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6" onChange={this.updateMessage} />
               </div>
-              <div className="12u$">
+              <div className="field">
                 <div className="dropzone">
                   <Dropzone
                     ref="dropzone"
@@ -169,14 +173,14 @@ class Main extends Component {
                   </Dropzone>
                 </div>
               </div>
-              <div className="12u$">
+              <div className="field">
                 <ul className="actions">
                   <li><input type="submit" value="Submit" className="special" onClick={this.handleSubmit} /></li>
                   <li><input type="reset" value="Cancel" onClick={this.onCloseModal} /></li>
                 </ul>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </Modal>
       </div>
     )

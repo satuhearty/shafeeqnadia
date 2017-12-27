@@ -171,7 +171,12 @@ class Rsvp extends Component {
                 <input type="submit" value="RSVP" className="special" onClick={this.handleSubmit} disabled={formSubmitted} />
               </div>
             </form>
-            <Modal open={open} onClose={this.onCloseModal} little>
+            <Modal
+              open={open}
+              onClose={this.onCloseModal}
+              little
+              classNames={{ overlay: 'custom-overlay', modal: 'custom-modal', closeIcon: 'custom-close' }}
+            >
               <div style={{ textAlign: 'center', padding: '25px 15px' }}>
                 <h2>RSVP sent successfully!</h2>
                 <p style={{ textAlign: 'center', margin: 0 }}>You have just RSVP for </p>

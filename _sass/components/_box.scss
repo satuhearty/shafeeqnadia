@@ -24,3 +24,22 @@
 			padding: 0;
 		}
 	}
+
+    .custom-modal {
+      background: rgba(27, 31, 34, 0.85) !important;
+    }
+
+    .custom-overlay {
+      background: rgba(183, 144, 144, 0.75) !important;
+    }
+
+    .custom-close {
+      background: white !important;
+      border-radius: 50%;
+    }
+
+    .dropzone {
+      border: 1px solid #fff !important;
+      background: transparent !important;
+      border-radius: 4px;
+    }
