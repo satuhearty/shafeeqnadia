@@ -16,13 +16,13 @@ $timeline-container-width:100%;
   position: relative;
   &__content {
     &-title {
-      font-weight: normal;
-      font-size: 66px;
-      margin: -10px 0 0 0;
-      transition: .4s;
-      padding: 0 10px;
-      box-sizing: border-box;
-      color: #fff;
+      //font-weight: normal;
+      font-size: 2em;
+      //margin: -10px 0 0 0;
+      //transition: .4s;
+      //padding: 0 10px;
+      //box-sizing: border-box;
+      //color: #fff;
     }
     &-desc {
       margin: 0;
@@ -91,7 +91,7 @@ $timeline-container-width:100%;
         opacity: 1;
       }
       .timeline__content-title {
-        margin: -50px 0 20px 0;
+        //margin: -50px 0 20px 0;
       }
     }
     @include responsive() {

@@ -39,11 +39,11 @@ class MasonryLayout extends Component {
 
     this.bricksInstance = instance;
     window.addEventListener('resize', this.updateDimensions);
-    document.getElementsByClassName('guestbook-button')[0].onclick = () => {
-      setTimeout(() => {
-        this.updateDimensions();
-      }, 500);
-    }
+    // document.getElementsByClassName('guestbook-button')[0].onclick = () => {
+    //   setTimeout(() => {
+    //     this.updateDimensions();
+    //   }, 500);
+    // }
   }
 
   componentDidUpdate() {

@@ -7,48 +7,58 @@
 @import 'font-awesome.min.css';
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600');
 
-/*
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+@include skel-breakpoints((
+	xlarge:		'(max-width: 1680px)',
+	large:		'(max-width: 1280px)',
+	medium:		'(max-width: 980px)',
+	small:		'(max-width: 736px)',
+	xsmall:		'(max-width: 480px)',
+	xxsmall:	'(max-width: 360px)'
+));
 
-	@include skel-breakpoints((
-		xlarge:		'(max-width: 1680px)',
-		large:		'(max-width: 1280px)',
-		medium:		'(max-width: 980px)',
-		small:		'(max-width: 736px)',
-		xsmall:		'(max-width: 480px)',
-		xxsmall:	'(max-width: 360px)'
-	));
-
-	@include skel-layout((
-		reset: 'full',
-		boxModel: 'border'
-	));
+@include skel-layout((
+	reset: 'full',
+	boxModel: 'border',
+	grid: (
+		gutters: 2em
+	),
+	breakpoints: (
+		medium: (
+			grid: (
+				gutters: 1.5em
+			)
+		),
+		small: (
+			grid: (
+				gutters: 1em
+			)
+		)
+	)
+));
 
 // Base.
 
-	@import 'base/page';
-	@import 'base/typography';
+@import 'base/page';
+@import 'base/typography';
 
 // Component.
 
-	@import 'components/form';
-	@import 'components/box';
-	@import 'components/icon';
-	@import 'components/image';
-	@import 'components/list';
-	@import 'components/table';
-	@import 'components/button';
-    @import 'components/timeline';
-    @import 'components/card';
-    @import 'components/react_table';
+@import 'components/form';
+@import 'components/box';
+@import 'components/icon';
+@import 'components/image';
+@import 'components/list';
+@import 'components/table';
+@import 'components/button';
+@import 'components/timeline';
+@import 'components/card';
+@import 'components/react_table';
+@import 'components/random';
 
 // Layout.
 
-	@import 'layout/bg';
-	@import 'layout/wrapper';
-	@import 'layout/header';
-	@import 'layout/main';
-	@import 'layout/footer';
+@import 'layout/bg';
+@import 'layout/wrapper';
+@import 'layout/header';
+@import 'layout/main';
+@import 'layout/footer';
