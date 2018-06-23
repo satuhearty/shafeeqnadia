@@ -3,7 +3,7 @@ title: Shafeeq & Nadia
 email: nikamirulmukmeen@gmail.com
 description: We are getting married!
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://satuhearty.github.io/shafeeqnadia" # the base hostname & protocol for your site
+url: "" #"https://satuhearty.github.io/shafeeqnadia" # the base hostname & protocol for your site
 author:
 street_address: 1234 Somewhere Road
 city: Nashville
