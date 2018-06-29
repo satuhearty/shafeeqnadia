@@ -51417,12 +51417,12 @@ function stop(id) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  apiKey: "AIzaSyDuG05V7fbtYLVivIyAZb3r-VEu40HidN4",
-  authDomain: "luqmannafisah.firebaseapp.com",
-  databaseURL: "https://luqmannafisah.firebaseio.com",
-  projectId: "luqmannafisah",
-  storageBucket: "luqmannafisah.appspot.com",
-  messagingSenderId: "10135909784"
+  apiKey: "AIzaSyA5Ak7jywbwAiSMjwyyxlcUCvdVNpBB4XI",
+  authDomain: "shafeeqnadia-250c8.firebaseapp.com",
+  databaseURL: "https://shafeeqnadia-250c8.firebaseio.com",
+  projectId: "shafeeqnadia-250c8",
+  storageBucket: "shafeeqnadia-250c8.appspot.com",
+  messagingSenderId: "550943530106"
 });
 
 /***/ }),
@@ -69810,7 +69810,7 @@ module.exports = function spread(callback) {
 
 
 const MODAL_TIMEOUT = 3000;
-const RSVP_CODE = 'shafeeqnadia';
+const RSVP_CODE = 'smsknf';
 
 class Rsvp extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
   constructor(...args) {
@@ -69819,23 +69819,44 @@ class Rsvp extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     return _temp = super(...args), this.state = {
       code: '',
       name: '',
-      email: '',
       phone: '',
       attending: 0,
       relationship: '',
+      nadiaDisabled: true,
+      nadia: false,
+      shafeeq: false,
       open: false,
       showForm: false,
       formSubmitted: false,
-      showGuestList: false
+      attendingArray: [],
+      extraGuests: []
     }, this.handleSubmit = e => {
       e.preventDefault();
       e.stopPropagation();
-      const guest = {
-        name: this.state.name,
-        phone: this.state.phone,
-        attending: this.state.attending,
-        relationship: this.state.relationship
-      };
+
+      const { name, phone, nadia, shafeeq, relationship, attending, extraGuests } = this.state;
+
+      if (name === '') {
+        this.createNotification('Please enter your name.', 'error');
+        return;
+      } else if (phone === '') {
+        this.createNotification('Please enter your phone number.', 'error');
+        return;
+      } else if (relationship === '') {
+        this.createNotification('Please select a relation.', 'error');
+        return;
+      } else if (attending === 1) {
+        this.createNotification('Please select the number of guests that are attending.', 'error');
+        return;
+      } else if (attending > 1 && extraGuests.length !== attending - 1) {
+        this.createNotification('Please enter guest names.', 'error');
+        return;
+      } else if (nadia === false && shafeeq === false) {
+        this.createNotification('Please select at least 1 event.', 'error');
+        return;
+      }
+
+      const guest = { name, phone, relationship, attending, extraGuests, nadia, shafeeq };
       this.props.firebase.database().ref('rsvp').push(guest);
       __WEBPACK_IMPORTED_MODULE_3_axios___default.a.post('https://formspree.io/nikamirulmukmeen@gmail.com', guest);
       this.onOpenModal();
@@ -69846,11 +69867,14 @@ class Rsvp extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
     }, this.handleCodeSubmit = e => {
       e.preventDefault();
       e.stopPropagation();
-      if (this.state.code === RSVP_CODE) {
+      const { nadia, shafeeq, code } = this.state;
+      if (nadia === false && shafeeq === false) {
+        this.createNotification('Please select at least one invitation.', 'error');
+      } else if (nadia === true && code !== RSVP_CODE) {
+        this.createNotification('Incorrect RSVP Code.', 'error');
+      } else {
         this.createNotification('Success!', 'success');
         this.setState({ showForm: true });
-      } else {
-        this.createNotification('Incorrect RSVP Code.', 'error');
       }
     }, this.createNotification = (message, type) => {
       __WEBPACK_IMPORTED_MODULE_2_react_notify_toast__["notify"].show(message, type, MODAL_TIMEOUT);
@@ -69858,37 +69882,36 @@ class Rsvp extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
       this.setState({ code: e.target.value });
     }, this.updateName = e => {
       this.setState({ name: e.target.value });
-    }, this.updateEmail = e => {
-      this.setState({ email: e.target.value });
     }, this.updatePhone = e => {
       this.setState({ phone: e.target.value });
+    }, this.updateRelationship = e => {
+      this.setState({ relationship: e.target.value });
     }, this.updateAttending = e => {
       this.setState({
         attending: e.target.value,
-        showGuestList: true
+        attendingArray: Array(e.target.value - 1).fill(1)
       });
-    }, this.updateRelationship = e => {
-      this.setState({ relationship: e.target.value });
+    }, this.updateGuests = e => {
+      const extraGuests = this.state.extraGuests;
+      const guestIndex = e.target.dataset.guestIndex;
+      extraGuests[guestIndex] = e.target.value;
+      this.setState({ extraGuests: extraGuests });
+    }, this.updateNadia = () => {
+      if (this.state.nadiaDisabled === true) {
+        this.setState({ nadiaDisabled: false });
+      }
+      this.setState({ nadia: !this.state.nadia });
+    }, this.updateShafeeq = () => {
+      this.setState({ shafeeq: !this.state.shafeeq });
     }, this.onOpenModal = () => {
       this.setState({ open: true });
     }, this.onCloseModal = () => {
       this.setState({ open: false });
     }, _temp;
   }
-  // componentDidMount() {
-  //   this.setState({ showForm: true });
-  // }
 
   render() {
-    const { open, attending, showForm, formSubmitted, showGuestList } = this.state;
-
-    const guests = [];
-    if (showGuestList) {
-      let i;
-      for (i = 0; i < attending; i++) {
-        guests.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_notify_toast___default.a, { key: i }));
-      }
-    }
+    const { open, nadia, shafeeq, attending, showForm, formSubmitted, attendingArray, nadiaDisabled } = this.state;
 
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
@@ -69903,17 +69926,32 @@ class Rsvp extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
           'RSVP'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'h3',
-          null,
-          'Please enter the RSVP code.'
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'form',
           { className: 'alt', method: 'post', action: '' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'field' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'code', id: 'code', placeholder: 'RSVP Code', onChange: this.updateCode })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'checkbox', id: 'nadia', name: 'nadia', checked: nadia, onChange: this.updateNadia }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'nadia' },
+              'Nadia\' Side - Saturday, 4 August 2018, 7.30-10.30pm'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'field' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'code', id: 'code', placeholder: 'RSVP Code for Nadia\' Side', onChange: this.updateCode })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'field' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'checkbox', id: 'shafeeq', name: 'shafeeq', checked: shafeeq, onChange: this.updateShafeeq }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'shafeeq' },
+              'Shafeeq\'s Side - Saturday, 28 July 2018, 6-11pm'
+            )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
@@ -69971,10 +70009,10 @@ class Rsvp extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
               { className: 'select-wrapper' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'select',
-                { name: 'attending', id: 'attending', onChange: this.updateAttending },
+                { name: 'attending', id: 'attending', defaultValue: '0', onChange: this.updateAttending },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                   'option',
-                  { value: '' },
+                  { value: '0', disabled: true },
                   '# of people attending'
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -70075,6 +70113,44 @@ class Rsvp extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                   'Bioeconomy Corporation'
                 )
               )
+            )
+          ),
+          attendingArray.map((x, i) => {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'field', key: i },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                type: 'text',
+                name: `guest-${i}`,
+                placeholder: `Guest ${i + 1} Name *`,
+                'data-guest-index': i,
+                onChange: this.updateGuests
+              })
+            );
+          }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h3',
+            null,
+            'I will be attending:'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'field' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'checkbox', id: 'nadia', name: 'nadia', checked: nadia, onChange: this.updateNadia, disabled: nadiaDisabled }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'nadia' },
+              'Nadia\' Side - Saturday, 4 August 2018, 7.30-10.30pm'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'field' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'checkbox', id: 'shafeeq', name: 'shafeeq', checked: shafeeq, onChange: this.updateShafeeq }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'label',
+              { htmlFor: 'shafeeq' },
+              'Shafeeq\'s Side - Saturday, 28 July 2018, 6-11pm'
             )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
