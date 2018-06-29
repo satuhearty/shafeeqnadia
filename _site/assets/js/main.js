@@ -11,6 +11,8 @@
 
   $(function() {
 
+    new LazyLoad();
+
     const	$window = $(window),
       $body = $('body'),
       $wrapper = $('#wrapper'),
