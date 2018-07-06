@@ -44,9 +44,8 @@ class App extends Component {
       Object.keys(guests).forEach((key) => {
         guestList.push({
           'name': guests[key].name,
-          'email': guests[key].email,
           'phone': guests[key].phone,
-          'nikah': guests[key].nikah,
+          'attending': guests[key].nikah,
           'reception': guests[key].reception,
           'brunch': guests[key].brunch,
           'attending': guests[key].attending

@@ -146,7 +146,7 @@ class Rsvp extends Component {
               </div>
               <div className="field">
                 <input type="checkbox" id="shafeeq" name="shafeeq" checked={shafeeq} onChange={this.updateShafeeq} />
-                <label htmlFor="shafeeq">Shafeeq's Side - Saturday, 28 July 2018, 6-11pm</label>
+                <label htmlFor="shafeeq">Shafeeq's Side - Saturday, 21 July 2018, 11.30am-4pm</label>
               </div>
               <div className="field" style={{ textAlign: 'center' }}>
                 <input type="submit" value="Submit" className="special" onClick={this.handleCodeSubmit} />
