@@ -1,3 +1,3 @@
 # shafeeqnadia
 Shafeeq & Nadia's wedding website.  
-[shafeeqnadia.com](htts://satuhearty.github.io/shafeeqnadia)
+[shafeeqnadia.com](https://satuhearty.github.io/shafeeqnadia)
